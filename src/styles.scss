@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://m2008m1033m.s3.us-west-2.amazonaws.com/Public/fa/css/all.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+* {
+  font-family: "Tajawal", sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
