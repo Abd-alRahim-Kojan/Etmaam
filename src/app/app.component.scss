@@ -1,0 +1,42 @@
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+
+.swiper-button-prev {
+  display: none;
+  right: 0 !important;
+  transform: translateX(-20rem);
+  &::after {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.1rem;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #225476;
+    border-radius: 100%;
+  }
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+.swiper-button-next {
+  right: 0 !important;
+  transform: translateX(-50rem);
+  &::after {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0.3rem;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #225476;
+    border-radius: 100%;
+  }
+}

@@ -1,9 +1,17 @@
+<!-- trasperent layer for sm size -->
+<div
+  class="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-20"
+  *ngIf="isMenuOpen"
+  (click)="toggleMenu()"
+></div>
 <!-- header section -->
-<header class="min-h-[620px] bg-[url('assets/images/header.png')] bg-cover">
+<header
+  class="min-h-[620px] bg-[url('assets/images/header.png')] bg-cover bg-center md:bg-bottom px-4"
+>
   <div class="container mx-auto text-white pt-6">
     <!-- links -->
     <div class="flex justify-between">
-      <div class="flex gap-5">
+      <div class="flex gap-5 ps-4 md:p-0">
         <p class="flex items-center gap-1 font-medium">
           <i class="fa-regular fa-envelope fa-lg"></i>
           {{ "info@etmaam.com.sa" }}
@@ -14,7 +22,7 @@
         </p>
       </div>
 
-      <div class="flex items-center gap-5">
+      <div class="hidden md:flex items-center gap-5">
         <a href="">
           <img src="./assets/svg/whatsup.svg" alt="whatsup" />
         </a>
@@ -52,38 +60,54 @@
     </div>
     <!-- navbar -->
     <nav class="flex items-center justify-between mt-8 pb-8 border-b">
-      <img src="./assets/svg/Logo 1.svg" alt="" />
-      <ul class="flex font-bold text-sm">
-        <li class="p-4 hover:-translate-y-1 transition">
+      <img src="./assets/svg/Logo 1.svg" alt="" class="ps-4 md:p-0" />
+
+      <!-- Toggle button -->
+      <button
+        class="sm:block md:hidden lg:hidden me-10 outline-none z-30"
+        (click)="toggleMenu()"
+      >
+        <i
+          class="transition-all"
+          [ngClass]="
+            isMenuOpen ? 'fa-solid fa-xmark fa-2xl' : 'fa-solid fa-bars fa-lg'
+          "
+        ></i>
+      </button>
+      <ul
+        class="flex flex-col md:flex-row font-bold md:static md:p-0 md:bg-transparent text-sm px-5 py-5 bg-sky-900/80 w-full md:max-w-fit absolute left-0 top-0 z-20"
+        [ngClass]="isMenuOpen ? 'flex' : 'hidden'"
+      >
+        <li class="p-2 lg:p-4 hover:-translate-y-1 transition">
           <a href="">الصفحة الرئيسية</a>
         </li>
-        <li class="p-4 hover:-translate-y-1 transition">
+        <li class="p-2 lg:p-4 hover:-translate-y-1 transition">
           <a href="">
             من نحن؟
             <i class="fa-solid fa-chevron-down pr-1"></i
           ></a>
         </li>
-        <li class="p-4 hover:-translate-y-1 transition">
+        <li class="p-2 lg:p-4 hover:-translate-y-1 transition">
           <a href="">
             مركز المساعدة
             <i class="fa-solid fa-chevron-down pr-1"></i
           ></a>
         </li>
-        <li class="p-4 hover:-translate-y-1 transition">
+        <li class="p-2 lg:p-4 hover:-translate-y-1 transition">
           <a href="">الباقات</a>
         </li>
-        <li class="p-4 hover:-translate-y-1 transition">
+        <li class="p-2 lg:p-4 hover:-translate-y-1 transition">
           <a href="">انضم إلينا</a>
         </li>
         <li
-          class="p-4 bg-white text-blue-950 hover:bg-blue-950 hover:text-white hover:-translate-y-1 transition"
+          class="p-2 lg:p-4 bg-white text-blue-950 hover:bg-blue-950 hover:text-white hover:-translate-y-1 transition"
         >
           <a href="">اطلب خدمة</a>
         </li>
       </ul>
     </nav>
-    <div class="pt-24 font-bold">
-      <h1 class="text-3xl">تأسيس الشركات</h1>
+    <div class="pt-24 font-bold ps-4 md:ps-0">
+      <h1 class="text-2xl md:text-3xl">تأسيس الشركات</h1>
       <p class="pt-8 text-xl">الصفحة الرئيسية / فتح شركة في السعودية</p>
     </div>
   </div>
@@ -91,7 +115,7 @@
 <!-- contact section -->
 <section>
   <div class="container mx-auto pt-6 grid grid-cols-1 md:grid-cols-6">
-    <div class="col-span-4 flex flex-col gap-16">
+    <div class="md:col-span-4 flex flex-col gap-16">
       <div class="bg-neutral-100 text-sky-800 px-6 py-8">
         <h3 class="text-3xl font-bold pb-6">
           إبدأ عملك في السعودية مع خدماتنا المتكاملة
@@ -124,7 +148,7 @@
         </p>
       </div>
     </div>
-    <div class="col-span-2 p-6">
+    <div class="md:col-span-2 p-6">
       <form action="" class="flex flex-col gap-2 text-sky-800 shadow-xl p-6">
         <h3 class="text-2xl font-bold text-center pb-4">تواصل معنا</h3>
         <input
@@ -170,29 +194,30 @@
   </div>
   <div class="overflow-hidden">
     <!-- slider-1 -->
-    <swiper-container
-      slides-per-view="3"
-      space-between="30"
-      navigation="true"
-      class="mt-12 relative w-full left-[calc((100%-80%)/-2)]"
+    <swiper
+      [config]="config"
+      class="mt-24 w-full lg:left-[calc((100%-80%)/-2)]"
     >
-      <swiper-slide *ngFor="let slide of slides">
-        <div
-          class="px-6 py-10 text-sky-900 shadow-md border border-sky-800 before:block before:border-2 before:border-sky-800 before:outline before:outline-white before:rounded-full before:w-4 before:h-4 before:-translate-x-40 before:-translate-y-24 before:bg-white"
-        >
-          <h1 class="font-bold text-4xl pb-8">{{ slide.title }}</h1>
-          <ul class="flex flex-col gap-4">
-            <li
-              class="font-medium text-xl"
-              *ngFor="let item of slide.items; let i = index"
-            >
-              <span class="bg-neutral-100 px-3 py-1 ml-3">{{ i + 1 }}</span
-              >{{ item }}
-            </li>
-          </ul>
-        </div>
-      </swiper-slide>
-    </swiper-container>
+      <ng-template ngFor let-slide [ngForOf]="slidesData" let-i="index">
+        <ng-template swiperSlide>
+          <div class="{{ slide.mainDivClasses }}">
+            <h1 class="font-bold text-2xl pb-8">{{ slide.title }}</h1>
+            <ul class="flex flex-col gap-3">
+              <li
+                class="font-medium"
+                *ngFor="let item of slide.items; let j = index"
+              >
+                <span
+                  class="bg-neutral-100 px-3 py-1 ml-3"
+                  style="width: 900px"
+                  >{{ j + 1 }}</span
+                >{{ item }}
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </ng-template>
+    </swiper>
   </div>
 </section>
 <!-- prpear companeis section -->
@@ -201,7 +226,7 @@
     class="container mx-auto pt-6 grid grid-cols-1 items-center md:grid-cols-2"
   >
     <img src="../assets/images/Group 42.png" alt="img" />
-    <div>
+    <div class="px-4 py-6 md:p-0">
       <h1 class="font-bold text-6xl text-sky-900 pb-6">إعداد الشركات في</h1>
       <p class="font-bold text-3xl pb-10">المملكة العربية السعودية</p>
       <div
@@ -244,9 +269,9 @@
 <!-- what we offeres section -->
 <section>
   <div
-    class="container mx-auto pt-6 grid grid-cols-1 items-center md:grid-cols-12"
+    class="container mx-auto pt-6 ps-4 md:ps-0 grid grid-cols-1 items-center md:grid-cols-12"
   >
-    <div class="col-span-2">
+    <div class="col-span-12 lg:col-span-2">
       <h1 class="font-bold text-4xl text-sky-900 py-6">ماذا نقدم لك ؟</h1>
       <p class="text-sky-800 font-medium text-lg leading-7 pb-10">
         هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا
@@ -255,24 +280,24 @@
       </p>
     </div>
     <div class="col-span-10">
-      <swiper-container
-        slides-per-view="3"
-        space-between="30"
-        navigation="true"
-        class="mt-12 w-full left-[calc((100%-80%)/-2)]"
+      <swiper
+        [config]="config"
+        class="mt-12 w-full lg:left-[calc((100%-80%)/-2)]"
       >
-        <swiper-slide *ngFor="let slide of servicesSlides">
-          <div
-            class="px-5 py-10 text-sky-900 shadow-lg max-w-96 min-h-96 border border-slate-100"
-          >
-            <img [src]="slide.image" alt="slide.image" class="h-16" />
-            <h1 class="font-bold text-2xl pb-8">{{ slide.title }}</h1>
-            <p class="text-black font-medium text-lg">
-              {{ slide.description }}
-            </p>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+        <ng-container *ngFor="let slide of servicesSlides">
+          <ng-template swiperSlide>
+            <div [ngClass]="slide.classes">
+              <img
+                [src]="slide.content.imageSrc"
+                [alt]="slide.content.imageAlt"
+                class="h-16"
+              />
+              <h1 class="font-bold text-2xl pb-8">{{ slide.content.title }}</h1>
+              <p class="font-medium text-lg">{{ slide.content.description }}</p>
+            </div>
+          </ng-template>
+        </ng-container>
+      </swiper>
     </div>
   </div>
 </section>
@@ -281,56 +306,19 @@
   <div
     class="container mx-auto bg-slate-100 p-20 mt-32 grid grid-cols-1 gap-4 items-center md:grid-cols-12"
   >
-    <div class="col-span-3 text-center font-bold text-4xl">
+    <div class="md:col-span-3 text-center font-bold text-4xl">
       خطوات إنهاء<span class="block text-sky-900">الخدمة</span>
     </div>
-    <div class="col-span-9 grid grid-cols-2 gap-14">
-      <div class="flex items-start gap-5">
+    <div class="md:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-14">
+      <div *ngFor="let item of offersItems" class="flex items-start gap-5">
         <img
-          src="../assets/svg/planing.svg"
-          alt="planing"
+          [src]="item.imageSrc"
+          [alt]="item.imageAlt"
           class="max-w-10 pt-3"
         />
         <div>
-          <h3 class="font-bold text-xl text-sky-900">التخطيط</h3>
-          <p class="font-medium text-xl">
-            تحديد الخطوات اللازمة لتحقيق و الوصول للهدف المرجو.
-          </p>
-        </div>
-      </div>
-      <div class="flex items-start gap-5">
-        <img src="../assets/svg/bank.svg" alt="bank" class="max-w-10 pt-3" />
-        <div>
-          <h3 class="font-bold text-xl text-sky-900">فتح حساب بنكي</h3>
-          <p class="font-medium text-xl">
-            للقيام بلعمليات المالية لاتمام اعمالك بشكل متكامل و سهل.
-          </p>
-        </div>
-      </div>
-      <div class="flex items-start gap-5">
-        <img
-          src="../assets/svg/establishing.svg"
-          alt="establishing"
-          class="max-w-10 pt-3"
-        />
-        <div>
-          <h3 class="font-bold text-xl text-sky-900">التأسيس</h3>
-          <p class="font-medium text-xl">
-            تحديد الفكرة من خلال تحليل السوق ووضع خطة عمل.
-          </p>
-        </div>
-      </div>
-      <div class="flex items-start gap-5">
-        <img
-          src="../assets/svg/tracking.svg"
-          alt="tracking"
-          class="max-w-10 pt-3"
-        />
-        <div>
-          <h3 class="font-bold text-xl text-sky-900">المتابعة و التحسين</h3>
-          <p class="font-medium text-xl">
-            تحديد الفكرة من خلال تحليل السوق ووضع خطة عمل.
-          </p>
+          <h3 class="font-bold text-xl text-sky-900">{{ item.title }}</h3>
+          <p class="font-medium text-xl">{{ item.description }}</p>
         </div>
       </div>
     </div>
@@ -341,16 +329,16 @@
   <div
     class="container mx-auto text-slate-300/85 p-20 mt-32 grid grid-cols-1 gap-8 md:grid-cols-12"
   >
-    <div class="col-span-4">
+    <div class="md:col-span-6 lg:col-span-4">
       <img src="../assets/svg/Logo 1.svg" alt="Logo" class="pb-5" />
       <h3>شركة إتمام للخدمات</h3>
       <p>الأولى في المملكة في خدمات الأعمال للمؤسسات والشركات</p>
     </div>
-    <div class="col-span-2">
+    <div class="md:col-span-6 lg:col-span-2">
       <h3 class="font-bold text-xl text-white pb-6">روابط هامّة</h3>
       <ul class="flex flex-col gap-2">
         <li
-          *ngFor="let item of items; index as i"
+          *ngFor="let item of links; index as i"
           class="cursor-pointer hover:text-white"
         >
           <i class="fa-solid fa-caret-right"></i>
@@ -358,7 +346,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-span-3">
+    <div class="md:col-span-6 lg:col-span-3">
       <h3 class="font-bold text-xl text-white pb-6">النّشرة الإخباريّة</h3>
       <p class="pb-4">
         اشترك في بوابة آخر الأخبار، لتصلك نشرة الأعمال وأحدث العروض
@@ -372,7 +360,7 @@
         الاشتراك
       </button>
     </div>
-    <div class="col-span-3">
+    <div class="md:col-span-6 lg:col-span-3">
       <h3 class="font-bold text-xl text-white pb-6">اتَصل بنا</h3>
       <li class="flex gap-4">
         <i class="fa-solid fa-house pt-2"></i>
@@ -398,8 +386,10 @@
   </div>
   <div class="container mx-auto text-slate-300/85">
     <hr />
-    <div class="flex justify-between mt-6">
-      <div class="flex items-center gap-2">
+    <div
+      class="flex flex-col lg:flex-row items-center gap-3 justify-between mt-6"
+    >
+      <div class="flex items-center gap-3 px-4 md:p-0">
         <i class="fa-solid fa-shield-halved"></i>
         <p>
           إتمام للخدمات شركة موثقة لدى وزارة التجارة، بسجل تجاري رقم 1010803431
