@@ -115,7 +115,7 @@ export class AppComponent {
       classes:
         'px-5 py-10 text-sky-900 shadow-lg max-w-96 min-h-96 border border-slate-100',
       content: {
-        imageSrc: '../assets/svg/low.svg',
+        imageSrc: 'assets/svg/low.svg',
         imageAlt: 'low',
         title: 'الخدمات القانونية | الالتزام القانوني',
         description:
@@ -126,7 +126,7 @@ export class AppComponent {
       classes:
         'px-5 py-10 shadow-lg max-w-96 min-h-96 bg-gradient-to-b from-sky-600 to-blue-900 text-white',
       content: {
-        imageSrc: '../assets/svg/note.svg',
+        imageSrc: 'assets/svg/note.svg',
         imageAlt: 'note',
         title: 'تصفية الشركة',
         description:
@@ -137,7 +137,7 @@ export class AppComponent {
       classes:
         'px-5 py-10 text-sky-900 shadow-lg max-w-96 min-h-96 border border-slate-100',
       content: {
-        imageSrc: '../assets/svg/translate.svg',
+        imageSrc: 'assets/svg/translate.svg',
         imageAlt: 'translate',
         title: 'خدمات الترجمة و تحسين التواصل',
         description:
@@ -148,7 +148,7 @@ export class AppComponent {
       classes:
         'px-5 py-10 text-sky-900 shadow-lg max-w-96 min-h-96 border border-slate-100',
       content: {
-        imageSrc: '../assets/svg/visa.svg',
+        imageSrc: 'assets/svg/visa.svg',
         imageAlt: 'visa',
         title: 'الفيزا و التأشيرات في المملكة العربية السعودية',
         description:
@@ -159,7 +159,7 @@ export class AppComponent {
       classes:
         'px-5 py-10 text-sky-900 shadow-lg max-w-96 min-h-96 border border-slate-100',
       content: {
-        imageSrc: '../assets/svg/taxes.svg',
+        imageSrc: 'assets/svg/taxes.svg',
         imageAlt: 'taxes',
         title: 'الزكاة و الضرائب و المعاملات المحاسبية',
         description:
@@ -175,25 +175,25 @@ export class AppComponent {
     description: string;
   }[] = [
     {
-      imageSrc: '../assets/svg/planing.svg',
+      imageSrc: 'assets/svg/planing.svg',
       imageAlt: 'planing',
       title: 'التخطيط',
       description: 'تحديد الخطوات اللازمة لتحقيق و الوصول للهدف المرجو.',
     },
     {
-      imageSrc: '../assets/svg/bank.svg',
+      imageSrc: 'assets/svg/bank.svg',
       imageAlt: 'bank',
       title: 'فتح حساب بنكي',
       description: 'للقيام بلعمليات المالية لاتمام اعمالك بشكل متكامل و سهل.',
     },
     {
-      imageSrc: '../assets/svg/establishing.svg',
+      imageSrc: 'assets/svg/establishing.svg',
       imageAlt: 'establishing',
       title: 'التأسيس',
       description: 'تحديد الفكرة من خلال تحليل السوق ووضع خطة عمل.',
     },
     {
-      imageSrc: '../assets/svg/tracking.svg',
+      imageSrc: 'assets/svg/tracking.svg',
       imageAlt: 'tracking',
       title: 'المتابعة و التحسين',
       description: 'تحديد الفكرة من خلال تحليل السوق ووضع خطة عمل.',
